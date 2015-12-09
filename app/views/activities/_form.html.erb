@@ -1,17 +1,46 @@
-<%= simple_form_for(@activity) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :date %>
-    <%= f.input :client %>
-    <%= f.input :description %>
-    <%= f.input :hours %>
-    <%= f.input :billable %>
-    <%= f.input :posted %>
-    <%= f.association :user %>
+<%= form_for @activity, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :date, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :date, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :client, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :client, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :description, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :hours, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :hours, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :billable, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :billable, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :posted, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :posted, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  activities_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
